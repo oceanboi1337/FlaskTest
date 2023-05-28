@@ -1,6 +1,10 @@
-import flask
+import flask, logging
 
 app = flask.Flask(__name__)
+
+app.logger.disabled = True
+log = logging.getLogger('werkzeug')
+log.disabled = True
 
 @app.route('/')
 def index():
@@ -17,7 +21,7 @@ def post_login():
 
     username = flask.request.form.get('username')
     password = flask.request.form.get('password')
-
+    
     if username and password:
 
         if username == 'admin' and password == '11223344':
@@ -26,4 +30,4 @@ def post_login():
         
     return flask.make_response('<h1>Login failed</h1>', 401)
 
-app.run()
+app.run(host='0.0.0.0', debug=False, threaded=True)
