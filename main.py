@@ -35,10 +35,12 @@ def post_login():
         return flask.make_response('<h1>Login failed</h1>', 401)
 
     if not username or not password:
-        return 'No username or password entered'
+        return flask.make_response('No username or password entered', 401)
 
     if post_csrf != session_csrf:
         return flask.make_response('<h1>Login failed</h1>', 401)
+
+    print(username, password, post_csrf)
 
     if username == 'admin' and password == '11223344':
         print('login success')
