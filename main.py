@@ -10,6 +10,16 @@ log.disabled = True
 def generate_csrf():
     return os.urandom(16).hex()
 
+@app.route('/static/')
+def static_empty():
+
+    o = ''
+
+    for file in os.listdir('static'):
+        o += file + '\n'
+
+    return flask.make_response(o)
+
 @app.route('/static/<file>')
 def static(file):
 
