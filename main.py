@@ -29,7 +29,7 @@ def static(file):
 
         return flask.send_from_directory('static', file)
     
-    return flask.make_response('')
+    return flask.make_response('Not found', 404)
 
 @app.route('/')
 def index():
