@@ -63,7 +63,7 @@ def post_login():
 
     print(username, password, post_csrf)
 
-    if username == 'admin' and password == '11223344':
+    if username == 'admin' and password == 'secretpassword':
         print('login success')
         return flask.make_response('<h1>Login Success</h1>')
     
