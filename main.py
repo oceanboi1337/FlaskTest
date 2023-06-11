@@ -1,4 +1,4 @@
-import flask, logging, os
+import flask, logging, os, time
 
 app = flask.Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -25,6 +25,8 @@ def get_login():
 
 @app.route('/login', methods=['POST'])
 def post_login():
+
+    time.sleep(1)
 
     username = flask.request.form.get('username')
     password = flask.request.form.get('password')
