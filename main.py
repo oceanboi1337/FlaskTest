@@ -1,6 +1,6 @@
 import flask, logging, os, time
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_folder=None)
 app.secret_key = os.urandom(32)
 
 app.logger.disabled = True
